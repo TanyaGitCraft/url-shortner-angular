@@ -1,0 +1,66 @@
+<nav>
+    <h1 class="text-indigo-600 text-4xl font-bold p-2">Url Shortner</h1>
+  </nav>
+  
+  
+  
+  <div class="container flex flex-col items-center justify-center h-screen">
+    <div class="form-group mb-4">
+      <input
+        type="text"
+        [formControl]="url"
+        placeholder="Enter URL"
+        class="h-10 w-72 border-solid border-2 border-slate-300 px-2"
+    
+      />
+      @if(hasError('required') && isSubmit){
+      <div  class="text-red-500">URL is required</div>
+      }
+    </div>
+    <div class="form-group mb-4">
+        <input
+          type="text"
+          [formControl]="alias"
+          placeholder="Enter Alias"
+          class="h-10 w-72 border-solid border-2 border-slate-300 px-2"
+       
+        />
+        @if(hasError('required') && isSubmit){
+        <div  class="text-red-500">Alias is required</div>
+        }
+      </div>
+      <!-- <div class="form-group mb-4">
+        <input
+          type="text"
+          [formControl]="user"
+          placeholder="Enter URL"
+          class="h-10 w-72 border-solid border-2 border-slate-300 px-2"
+          id="username"
+          name="username"
+        />
+        @if(hasError('required') && isSubmit){
+        <div  class="text-red-500">URL is required</div>
+        }
+      </div> -->
+    <div class="form-group">
+      <button
+        type="submit"
+        (click)="shorten()"
+        class="w-72 bg-slate-950 text-white p-2 rounded-md"
+      >
+        Shorten
+      </button>
+    </div>
+  
+    @if(shortenUrl){
+      <div class="form-group mt-2">
+          <p class="text-blue-700">
+              <a [href]="'http://localhost:8001/' + shortenUrl" target="_blank"> http://localhost:8001/{{
+                shortenUrl
+              }} </a> <span class="bg-blue-400 text-black p-1 hover:bg-sky-700" style="cursor:pointer" (click)="copyLink('http://localhost:8001/' + shortenUrl)">Copy Link </span>
+            </p>
+         
+        </div>
+    }
+  </div>
+  

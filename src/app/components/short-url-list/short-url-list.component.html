@@ -1,0 +1,22 @@
+<nav>
+  <h1 class="text-indigo-600 text-4xl font-bold p-2">Url Shortner</h1>
+</nav>
+
+<div class="container-fluid flex flex-col items-center justify-center h-screen">
+  <table>
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>ALIAS</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for(key of allShortUrls ; track $index){
+      <tr>
+        <td>{{key.url}}</td>
+        <td><a  [href]="key.url" target="_blank">{{key.alias}}</a> </td>
+          </tr>
+    }
+    </tbody>
+  </table>
+</div>
